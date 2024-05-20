@@ -12,10 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Portfolio App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: ThemeData.dark(),
       home: const MyHomePage(),
     );
   }
@@ -27,170 +24,58 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(
-          top: 100.0,
-          left: 20,
-        ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(20.0),
         child: Column(
           children: [
+            SizedBox(height: 80),
             Row(
               children: [
                 CircleAvatar(
                   radius: 60,
-                  backgroundImage: AssetImage(
-                    "assets/images/img.jpg",
+                  backgroundImage: AssetImage("assets/images/img.jpg"),
+                ),
+                SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Devender Butani",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontFamily: "Roboto",
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Software Developer",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Devender Butani",
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontFamily: "assets/fonts/Roboto-Medium.ttf",
-                      ),
-                    ),
-                    Text(
-                      "Software Developer",
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
                 ),
               ],
             ),
-            SizedBox(
-              height: 40,
-            ),
+            SizedBox(height: 40),
+            InfoSection(),
+            SizedBox(height: 40),
             Padding(
-              padding: EdgeInsets.only(
-                left: 30.0,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.school,
-                        size: 48,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text(
-                        "University of Windsor",
-                        style: TextStyle(
-                          fontSize: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.computer_rounded,
-                        size: 48,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text(
-                        "School Name",
-                        style: TextStyle(
-                          fontSize: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_city,
-                        size: 48,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text(
-                        "School Name",
-                        style: TextStyle(
-                          fontSize: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.email,
-                        size: 48,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text(
-                        "School Name",
-                        style: TextStyle(
-                          fontSize: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.phone,
-                        size: 48,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text(
-                        "School Name",
-                        style: TextStyle(
-                          fontSize: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Padding(
-              padding: EdgeInsets.all(
-                10.0,
-              ),
+              padding: EdgeInsets.all(10.0),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel urna nec purus facilisis cursus. Curabitur tincidunt sem ac eros gravida, ac placerat libero dignissim.",
+                "Results-driven Software Developer enhancing user engagement and driving business growth with cutting-edge technologies.",
                 style: TextStyle(
                   fontSize: 22,
                 ),
               ),
             ),
-            SizedBox(
-              height: 90,
-            ),
+            SizedBox(height: 100),
             Text(
               "Created by Devender Butani",
               style: TextStyle(
@@ -201,6 +86,83 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class InfoSection extends StatelessWidget {
+  const InfoSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        InfoRow(
+          icon: Icons.school,
+          text: "University of Windsor",
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        InfoRow(
+          icon: Icons.computer_rounded,
+          text: "Food REST API",
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        InfoRow(
+          icon: Icons.location_pin,
+          text: "Toronto, ON",
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        InfoRow(
+          icon: Icons.email,
+          text: "devenderbutani21@gmail.com",
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        InfoRow(
+          icon: Icons.phone,
+          text: "647-220-0561",
+        ),
+      ],
+    );
+  }
+}
+
+class InfoRow extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const InfoRow({
+    required this.icon,
+    required this.text,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          size: 48,
+        ),
+        const SizedBox(width: 20),
+        Expanded(
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
